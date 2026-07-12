@@ -109,24 +109,34 @@ function ProductPage() {
             </div>
           )}
 
-          <div className="mt-8 flex items-center gap-3">
-            <div className="flex h-12 items-center rounded-full border border-border">
-              <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="px-4 text-lg">−</button>
-              <span className="w-8 text-center">{qty}</span>
-              <button onClick={() => setQty((q) => q + 1)} className="px-4 text-lg">+</button>
+          <div className="mt-8 space-y-3">
+            <div className="flex items-center gap-3">
+              <div className="flex h-12 items-center rounded-full border border-border">
+                <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="px-4 text-lg">−</button>
+                <span className="w-8 text-center">{qty}</span>
+                <button onClick={() => setQty((q) => q + 1)} className="px-4 text-lg">+</button>
+              </div>
+              <a
+                href={whatsappOrderSingle(product, qty, ["vetements", "chaussures"].includes(product.category) ? size : undefined)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold uppercase tracking-wider text-primary-foreground transition hover:opacity-90"
+              >
+                Commander sur WhatsApp
+              </a>
+              <button
+                onClick={() => toggleFav(product.id)}
+                aria-label="Favori"
+                className="grid h-12 w-12 place-items-center rounded-full border border-border transition hover:border-foreground"
+              >
+                <Heart className={`h-5 w-5 ${isFav(product.id) ? "fill-primary text-primary" : ""}`} />
+              </button>
             </div>
             <button
               onClick={handleAdd}
-              className="flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold uppercase tracking-wider text-primary-foreground transition hover:opacity-90"
+              className="flex h-11 w-full items-center justify-center gap-2 rounded-full border border-border text-sm font-medium transition hover:border-foreground"
             >
-              {added ? <><Check className="h-4 w-4" /> Ajouté</> : <><ShoppingBag className="h-4 w-4" /> Ajouter au panier</>}
-            </button>
-            <button
-              onClick={() => toggleFav(product.id)}
-              aria-label="Favori"
-              className="grid h-12 w-12 place-items-center rounded-full border border-border transition hover:border-foreground"
-            >
-              <Heart className={`h-5 w-5 ${isFav(product.id) ? "fill-primary text-primary" : ""}`} />
+              {added ? <><Check className="h-4 w-4" /> Ajouté au panier</> : <><ShoppingBag className="h-4 w-4" /> Ajouter au panier</>}
             </button>
           </div>
 
