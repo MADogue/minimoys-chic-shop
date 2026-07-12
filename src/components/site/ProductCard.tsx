@@ -6,7 +6,7 @@ import { useCart } from "@/lib/cart-store";
 import { whatsappOrderSingle } from "@/lib/whatsapp";
 
 export function ProductCard({ product }: { product: Product }) {
-  const { add, toggleFav, isFav } = useCart();
+  const { toggleFav, isFav, add } = useCart();
   const promo =
     product.oldPrice && product.oldPrice > product.price
       ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
