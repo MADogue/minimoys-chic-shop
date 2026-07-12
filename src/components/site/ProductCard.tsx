@@ -1,12 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { Heart, Star, ShoppingBag } from "lucide-react";
+import { Heart, Star } from "lucide-react";
 import type { Product } from "@/lib/data";
 import { formatFC } from "@/lib/data";
 import { useCart } from "@/lib/cart-store";
-import { whatsappOrderSingle } from "@/lib/whatsapp";
 
 export function ProductCard({ product }: { product: Product }) {
-  const { toggleFav, isFav, add } = useCart();
+  const { toggleFav, isFav } = useCart();
   const promo =
     product.oldPrice && product.oldPrice > product.price
       ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
