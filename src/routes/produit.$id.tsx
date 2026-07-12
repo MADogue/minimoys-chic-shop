@@ -4,6 +4,7 @@ import { findProduct, formatFC, products } from "@/lib/data";
 import { useCart } from "@/lib/cart-store";
 import { Star, ShoppingBag, Heart, Truck, ShieldCheck, RotateCcw, Check } from "lucide-react";
 import { ProductCard } from "@/components/site/ProductCard";
+import { whatsappOrderSingle } from "@/lib/whatsapp";
 
 export const Route = createFileRoute("/produit/$id")({
   loader: ({ params }) => {
