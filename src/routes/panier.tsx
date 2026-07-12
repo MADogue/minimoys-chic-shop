@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCart } from "@/lib/cart-store";
 import { formatFC } from "@/lib/data";
+import { whatsappOrderCart } from "@/lib/whatsapp";
 import { Trash2, ArrowRight, Tag } from "lucide-react";
 import { useState } from "react";
 
