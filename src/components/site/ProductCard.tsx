@@ -1,12 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { Heart, Star, ShoppingBag } from "lucide-react";
+import { Heart, Star } from "lucide-react";
 import type { Product } from "@/lib/data";
 import { formatFC } from "@/lib/data";
 import { useCart } from "@/lib/cart-store";
-import { whatsappOrderSingle } from "@/lib/whatsapp";
 
 export function ProductCard({ product }: { product: Product }) {
-  const { toggleFav, isFav, add } = useCart();
+  const { toggleFav, isFav } = useCart();
   const promo =
     product.oldPrice && product.oldPrice > product.price
       ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
@@ -42,23 +41,6 @@ export function ProductCard({ product }: { product: Product }) {
         >
           <Heart className={`h-4 w-4 ${isFav(product.id) ? "fill-primary text-primary" : ""}`} />
         </button>
-        <div className="absolute inset-x-3 bottom-3 flex translate-y-2 gap-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-          <a
-            href={whatsappOrderSingle(product)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-primary py-2.5 text-xs font-semibold uppercase tracking-wider text-primary-foreground"
-          >
-            Commander
-          </a>
-          <button
-            onClick={() => add(product)}
-            aria-label="Ajouter au panier"
-            className="grid h-9 w-9 place-items-center rounded-full bg-background text-foreground"
-          >
-            <ShoppingBag className="h-3.5 w-3.5" />
-          </button>
-        </div>
       </div>
 
       <div className="mt-3 flex-1">
