@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCart } from "@/lib/cart-store";
 import { formatFC } from "@/lib/data";
+import { whatsappOrderCart } from "@/lib/whatsapp";
 import { Trash2, ArrowRight, Tag } from "lucide-react";
 import { useState } from "react";
 
@@ -85,10 +86,15 @@ function Panier() {
                 <span>{formatFC(total)}</span>
               </div>
             </div>
-            <Link to="/paiement" className="mt-6 flex items-center justify-center gap-2 rounded-full bg-primary py-3 text-sm font-semibold uppercase tracking-wider text-primary-foreground">
-              Passer la commande <ArrowRight className="h-4 w-4" />
-            </Link>
-            <div className="mt-3 text-center text-xs text-ink-muted">Paiement à la livraison disponible</div>
+            <a
+              href={whatsappOrderCart(items, total)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 flex items-center justify-center gap-2 rounded-full bg-primary py-3 text-sm font-semibold uppercase tracking-wider text-primary-foreground"
+            >
+              Commander sur WhatsApp <ArrowRight className="h-4 w-4" />
+            </a>
+            <div className="mt-3 text-center text-xs text-ink-muted">Commande confirmée en 1 clic · Paiement à la livraison</div>
           </aside>
         </div>
       )}
