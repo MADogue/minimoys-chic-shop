@@ -3,6 +3,7 @@ import { Heart, Star, ShoppingBag } from "lucide-react";
 import type { Product } from "@/lib/data";
 import { formatFC } from "@/lib/data";
 import { useCart } from "@/lib/cart-store";
+import { whatsappOrderSingle } from "@/lib/whatsapp";
 
 export function ProductCard({ product }: { product: Product }) {
   const { add, toggleFav, isFav } = useCart();
