@@ -1,13 +1,28 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCart } from "@/lib/cart-store";
-import { products } from "@/lib/data";
+import { productsQueryOptions } from "@/lib/products";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Heart } from "lucide-react";
 
-export const Route = createFileRoute("/favoris")({ component: Favoris });
+export const Route = createFileRoute("/favoris")({
+  loader: ({ context }) => {
+    context.queryClient.ensureQueryData(productsQueryOptions);
+  },
+  component: Favoris,
+  errorComponent: () => (
+    <div className="container-page py-24 text-center text-ink-muted">
+      Impossible de charger les produits.
+    </div>
+  ),
+  notFoundComponent: () => (
+    <div className="container-page py-24 text-center text-ink-muted">Aucun favori.</div>
+  ),
+});
 
 function Favoris() {
   const { favorites } = useCart();
+  const { data: products } = useSuspenseQuery(productsQueryOptions);
   const list = products.filter((p) => favorites.includes(p.id));
   return (
     <div className="container-page py-10 md:py-16">

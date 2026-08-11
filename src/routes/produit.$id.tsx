@@ -1,15 +1,18 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
-import { findProduct, formatFC, products } from "@/lib/data";
+import { formatFC } from "@/lib/data";
+import { productQueryOptions, productsQueryOptions } from "@/lib/products";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { useCart } from "@/lib/cart-store";
 import { Star, ShoppingBag, Heart, Truck, ShieldCheck, RotateCcw, Check } from "lucide-react";
 import { ProductCard } from "@/components/site/ProductCard";
 import { whatsappOrderSingle } from "@/lib/whatsapp";
 
 export const Route = createFileRoute("/produit/$id")({
-  loader: ({ params }) => {
-    const p = findProduct(params.id);
+  loader: async ({ params, context }) => {
+    const p = await context.queryClient.ensureQueryData(productQueryOptions(params.id));
     if (!p) throw notFound();
+    context.queryClient.ensureQueryData(productsQueryOptions);
     return p;
   },
   component: ProductPage,
@@ -43,6 +46,7 @@ const SIZES = ["S", "M", "L", "XL"];
 
 function ProductPage() {
   const product = Route.useLoaderData();
+  const { data: products } = useSuspenseQuery(productsQueryOptions);
   const { add, toggleFav, isFav } = useCart();
   const [qty, setQty] = useState(1);
   const [size, setSize] = useState("M");

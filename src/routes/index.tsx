@@ -1,14 +1,28 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Truck, ShieldCheck, Award, MessageCircle, Sparkles } from "lucide-react";
-import { categories, products } from "@/lib/data";
+import { categories } from "@/lib/data";
+import { productsQueryOptions } from "@/lib/products";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { ProductCard } from "@/components/site/ProductCard";
 import hero from "@/assets/hero.jpg";
 
 export const Route = createFileRoute("/")({
+  loader: ({ context }) => {
+    context.queryClient.ensureQueryData(productsQueryOptions);
+  },
   component: Home,
+  errorComponent: () => (
+    <div className="container-page py-24 text-center text-ink-muted">
+      Impossible de charger les produits.
+    </div>
+  ),
+  notFoundComponent: () => (
+    <div className="container-page py-24 text-center text-ink-muted">Page introuvable.</div>
+  ),
 });
 
 function Home() {
+  const { data: products } = useSuspenseQuery(productsQueryOptions);
   const popular = products.slice(0, 8);
   return (
     <>

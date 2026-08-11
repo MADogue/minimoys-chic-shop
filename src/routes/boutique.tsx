@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { z } from "zod";
-import { products, categories, brands, formatFC } from "@/lib/data";
+import { categories, formatFC } from "@/lib/data";
+import { productsQueryOptions } from "@/lib/products";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { ProductCard } from "@/components/site/ProductCard";
 import { SlidersHorizontal, X } from "lucide-react";
 
@@ -12,11 +14,24 @@ const searchSchema = z.object({
 
 export const Route = createFileRoute("/boutique")({
   validateSearch: (s) => searchSchema.parse(s),
+  loader: ({ context }) => {
+    context.queryClient.ensureQueryData(productsQueryOptions);
+  },
   component: Boutique,
+  errorComponent: () => (
+    <div className="container-page py-24 text-center text-ink-muted">
+      Impossible de charger les produits.
+    </div>
+  ),
+  notFoundComponent: () => (
+    <div className="container-page py-24 text-center text-ink-muted">Aucun produit.</div>
+  ),
 });
 
 function Boutique() {
   const search = Route.useSearch();
+  const { data: products } = useSuspenseQuery(productsQueryOptions);
+  const brands = Array.from(new Set(products.map((p) => p.brand)));
   const [cat, setCat] = useState<string | undefined>(search.cat);
   const [query, setQuery] = useState<string>(search.q ?? "");
   const [brand, setBrand] = useState<string | undefined>();
@@ -38,7 +53,7 @@ function Boutique() {
     if (sort === "new") list = [...list].sort((a, b) => Number(!!b.isNew) - Number(!!a.isNew));
     if (sort === "pop") list = [...list].sort((a, b) => b.reviews - a.reviews);
     return list;
-  }, [cat, brand, maxPrice, query, sort]);
+  }, [products, cat, brand, maxPrice, query, sort]);
 
   const activeCat = categories.find((c) => c.slug === cat);
 
