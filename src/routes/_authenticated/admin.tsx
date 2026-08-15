@@ -35,6 +35,21 @@ export const Route = createFileRoute("/_authenticated/admin")({
   }),
 });
 
+type ProductPayload = {
+  id?: string;
+  name: string;
+  description: string;
+  price: number;
+  original_price: number | null;
+  category: string;
+  brand: string;
+  image: string;
+  rating: number;
+  review_count: number;
+  stock: number;
+  is_new: boolean;
+};
+
 type FormState = {
   id?: string;
   name: string;
