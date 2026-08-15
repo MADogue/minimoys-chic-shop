@@ -89,7 +89,7 @@ function AdminPage() {
   };
 
   const saveMutation = useMutation({
-    mutationFn: (payload: Parameters<typeof saveProduct>[0]["data"]) => saveFn({ data: payload }),
+    mutationFn: (payload: ProductPayload) => saveFn({ data: payload }),
     onSuccess: () => {
       toast.success("Produit enregistré.");
       setOpen(false);

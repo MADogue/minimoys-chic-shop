@@ -21,8 +21,10 @@ import { Route as CategoriesRouteImport } from './routes/categories'
 import { Route as BoutiqueRouteImport } from './routes/boutique'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AProposRouteImport } from './routes/a-propos'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProduitIdRouteImport } from './routes/produit.$id'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 
 const PanierRoute = PanierRouteImport.update({
   id: '/panier',
@@ -84,6 +86,10 @@ const AProposRoute = AProposRouteImport.update({
   path: '/a-propos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -93,6 +99,11 @@ const ProduitIdRoute = ProduitIdRouteImport.update({
   id: '/produit/$id',
   path: '/produit/$id',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -109,6 +120,7 @@ export interface FileRoutesByFullPath {
   '/mon-compte': typeof MonCompteRoute
   '/paiement': typeof PaiementRoute
   '/panier': typeof PanierRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/produit/$id': typeof ProduitIdRoute
 }
 export interface FileRoutesByTo {
@@ -125,11 +137,13 @@ export interface FileRoutesByTo {
   '/mon-compte': typeof MonCompteRoute
   '/paiement': typeof PaiementRoute
   '/panier': typeof PanierRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/produit/$id': typeof ProduitIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/a-propos': typeof AProposRoute
   '/auth': typeof AuthRoute
   '/boutique': typeof BoutiqueRoute
@@ -142,6 +156,7 @@ export interface FileRoutesById {
   '/mon-compte': typeof MonCompteRoute
   '/paiement': typeof PaiementRoute
   '/panier': typeof PanierRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/produit/$id': typeof ProduitIdRoute
 }
 export interface FileRouteTypes {
@@ -160,6 +175,7 @@ export interface FileRouteTypes {
     | '/mon-compte'
     | '/paiement'
     | '/panier'
+    | '/admin'
     | '/produit/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -176,10 +192,12 @@ export interface FileRouteTypes {
     | '/mon-compte'
     | '/paiement'
     | '/panier'
+    | '/admin'
     | '/produit/$id'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/a-propos'
     | '/auth'
     | '/boutique'
@@ -192,11 +210,13 @@ export interface FileRouteTypes {
     | '/mon-compte'
     | '/paiement'
     | '/panier'
+    | '/_authenticated/admin'
     | '/produit/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AProposRoute: typeof AProposRoute
   AuthRoute: typeof AuthRoute
   BoutiqueRoute: typeof BoutiqueRoute
@@ -298,6 +318,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AProposRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -312,11 +339,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProduitIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AProposRoute: AProposRoute,
   AuthRoute: AuthRoute,
   BoutiqueRoute: BoutiqueRoute,
