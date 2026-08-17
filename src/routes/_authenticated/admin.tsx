@@ -2,9 +2,10 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { useMemo, useState } from "react";
-import { Minus, Plus, Pencil, Trash2, LogOut } from "lucide-react";
+import { Minus, Plus, Pencil, Trash2, LogOut, Upload } from "lucide-react";
 import { toast } from "sonner";
 import { categories } from "@/lib/data";
+import { resolveImage } from "@/lib/products";
 import { supabase } from "@/integrations/supabase/client";
 import {
   adminListProducts,
