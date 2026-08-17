@@ -2,9 +2,10 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { useMemo, useState } from "react";
-import { Minus, Plus, Pencil, Trash2, LogOut } from "lucide-react";
+import { Minus, Plus, Pencil, Trash2, LogOut, Upload } from "lucide-react";
 import { toast } from "sonner";
 import { categories } from "@/lib/data";
+import { resolveImage } from "@/lib/products";
 import { supabase } from "@/integrations/supabase/client";
 import {
   adminListProducts,
@@ -90,6 +91,38 @@ function AdminPage() {
 
   const [form, setForm] = useState<FormState>(emptyForm);
   const [open, setOpen] = useState(false);
+  const [uploading, setUploading] = useState(false);
+
+  const uploadImage = async (file: File) => {
+    if (!file.type.startsWith("image/")) {
+      toast.error("Choisissez un fichier image.");
+      return;
+    }
+    if (file.size > 8 * 1024 * 1024) {
+      toast.error("Image trop lourde (8 Mo max).");
+      return;
+    }
+    setUploading(true);
+    try {
+      const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
+      const path = `${crypto.randomUUID()}.${ext}`;
+      const { error } = await supabase.storage
+        .from("product-images")
+        .upload(path, file, { contentType: file.type, upsert: false });
+      if (error) throw error;
+      const { data, error: signError } = await supabase.storage
+        .from("product-images")
+        .createSignedUrl(path, 60 * 60 * 24 * 365 * 10);
+      if (signError || !data?.signedUrl) throw signError ?? new Error("URL indisponible");
+      setForm((f) => ({ ...f, image: data.signedUrl }));
+      toast.success("Image envoyée.");
+    } catch (e) {
+      toast.error((e as Error).message || "Envoi de l'image impossible.");
+    } finally {
+      setUploading(false);
+    }
+  };
+
 
   const adminQuery = useQuery({ queryKey: ["is-admin"], queryFn: () => isAdminFn({}) });
   const productsQuery = useQuery({
@@ -250,12 +283,48 @@ function AdminPage() {
               value={form.brand}
               onChange={(e) => setForm({ ...form, brand: e.target.value })}
             />
-            <input
-              className={field}
-              placeholder="Image (URL ou clé: hero, cat-shoes…)"
-              value={form.image}
-              onChange={(e) => setForm({ ...form, image: e.target.value })}
-            />
+            <div className="md:col-span-3">
+              <div className="flex flex-wrap items-center gap-4">
+                {form.image ? (
+                  <img
+                    src={resolveImage(form.image)}
+                    alt="Aperçu du produit"
+                    className="h-20 w-20 rounded-lg border border-border object-cover"
+                  />
+                ) : null}
+                <label className="inline-flex h-11 cursor-pointer items-center gap-2 rounded-full border border-border px-5 text-sm">
+                  <Upload className="h-4 w-4" />
+                  {uploading ? "Envoi…" : "Photo depuis mon téléphone"}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    disabled={uploading}
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      e.target.value = "";
+                      if (file) uploadImage(file);
+                    }}
+                  />
+                </label>
+                {form.image ? (
+                  <button
+                    type="button"
+                    onClick={() => setForm((f) => ({ ...f, image: "" }))}
+                    className="text-sm text-ink-muted underline"
+                  >
+                    Retirer l'image
+                  </button>
+                ) : null}
+              </div>
+              <input
+                className={`${field} mt-3`}
+                placeholder="Ou coller un lien d'image (facultatif)"
+                value={form.image}
+                onChange={(e) => setForm({ ...form, image: e.target.value })}
+              />
+            </div>
+
             <input
               className={field}
               placeholder="Note (0-5)"
