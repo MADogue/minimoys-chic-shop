@@ -250,12 +250,48 @@ function AdminPage() {
               value={form.brand}
               onChange={(e) => setForm({ ...form, brand: e.target.value })}
             />
-            <input
-              className={field}
-              placeholder="Image (URL ou clé: hero, cat-shoes…)"
-              value={form.image}
-              onChange={(e) => setForm({ ...form, image: e.target.value })}
-            />
+            <div className="md:col-span-3">
+              <div className="flex flex-wrap items-center gap-4">
+                {form.image ? (
+                  <img
+                    src={resolveImage(form.image)}
+                    alt="Aperçu du produit"
+                    className="h-20 w-20 rounded-lg border border-border object-cover"
+                  />
+                ) : null}
+                <label className="inline-flex h-11 cursor-pointer items-center gap-2 rounded-full border border-border px-5 text-sm">
+                  <Upload className="h-4 w-4" />
+                  {uploading ? "Envoi…" : "Photo depuis mon téléphone"}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    disabled={uploading}
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      e.target.value = "";
+                      if (file) uploadImage(file);
+                    }}
+                  />
+                </label>
+                {form.image ? (
+                  <button
+                    type="button"
+                    onClick={() => setForm((f) => ({ ...f, image: "" }))}
+                    className="text-sm text-ink-muted underline"
+                  >
+                    Retirer l'image
+                  </button>
+                ) : null}
+              </div>
+              <input
+                className={`${field} mt-3`}
+                placeholder="Ou coller un lien d'image (facultatif)"
+                value={form.image}
+                onChange={(e) => setForm({ ...form, image: e.target.value })}
+              />
+            </div>
+
             <input
               className={field}
               placeholder="Note (0-5)"
