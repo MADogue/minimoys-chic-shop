@@ -91,6 +91,38 @@ function AdminPage() {
 
   const [form, setForm] = useState<FormState>(emptyForm);
   const [open, setOpen] = useState(false);
+  const [uploading, setUploading] = useState(false);
+
+  const uploadImage = async (file: File) => {
+    if (!file.type.startsWith("image/")) {
+      toast.error("Choisissez un fichier image.");
+      return;
+    }
+    if (file.size > 8 * 1024 * 1024) {
+      toast.error("Image trop lourde (8 Mo max).");
+      return;
+    }
+    setUploading(true);
+    try {
+      const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
+      const path = `${crypto.randomUUID()}.${ext}`;
+      const { error } = await supabase.storage
+        .from("product-images")
+        .upload(path, file, { contentType: file.type, upsert: false });
+      if (error) throw error;
+      const { data, error: signError } = await supabase.storage
+        .from("product-images")
+        .createSignedUrl(path, 60 * 60 * 24 * 365 * 10);
+      if (signError || !data?.signedUrl) throw signError ?? new Error("URL indisponible");
+      setForm((f) => ({ ...f, image: data.signedUrl }));
+      toast.success("Image envoyée.");
+    } catch (e) {
+      toast.error((e as Error).message || "Envoi de l'image impossible.");
+    } finally {
+      setUploading(false);
+    }
+  };
+
 
   const adminQuery = useQuery({ queryKey: ["is-admin"], queryFn: () => isAdminFn({}) });
   const productsQuery = useQuery({
