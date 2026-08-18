@@ -15,7 +15,7 @@ import {
   saveProduct,
 } from "@/lib/admin.functions";
 
-export const Route = createFileRoute("/_authenticated/admin")({
+export const Route = createFileRoute("/_authenticated/admin/")({
   component: AdminPage,
   head: () => ({
     meta: [
