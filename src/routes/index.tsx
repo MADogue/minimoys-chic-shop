@@ -70,7 +70,7 @@ function Home() {
             <div className="relative overflow-hidden rounded-2xl bg-background shadow-2xl shadow-black/10">
               <img
                 src={hero}
-                alt="Sélection Minimoys Service"
+                alt="Sélection Eventaya Service"
                 width={1600}
                 height={1200}
                 className="aspect-[4/3] w-full object-cover"
@@ -170,7 +170,7 @@ function Home() {
           </div>
           <div className="relative max-w-2xl">
             <div className="text-xs uppercase tracking-[0.3em] text-primary-foreground/60">
-              Pourquoi Minimoys Service
+              Pourquoi Eventaya Service
             </div>
             <h2 className="mt-3 font-display text-4xl md:text-6xl">
               Une boutique fiable, pensée pour la RDC.

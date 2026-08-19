@@ -38,7 +38,7 @@ function Inscription() {
     <div className="container-page grid min-h-[70vh] place-items-center py-16">
       <form className="w-full max-w-md rounded-2xl border border-border p-8" onSubmit={onSubmit}>
         <h1 className="font-display text-3xl">Créer un compte</h1>
-        <p className="mt-1 text-sm text-ink-muted">Rejoignez Minimoys Service en 30 secondes.</p>
+        <p className="mt-1 text-sm text-ink-muted">Rejoignez Eventaya Service en 30 secondes.</p>
         <div className="mt-6 space-y-3">
           <input value={form.name} onChange={update("name")} placeholder="Nom complet" className="h-11 w-full rounded-lg border border-border bg-background px-4 text-sm outline-none focus:border-foreground" />
           <input value={form.phone} onChange={update("phone")} type="tel" placeholder="Téléphone (WhatsApp)" className="h-11 w-full rounded-lg border border-border bg-background px-4 text-sm outline-none focus:border-foreground" />

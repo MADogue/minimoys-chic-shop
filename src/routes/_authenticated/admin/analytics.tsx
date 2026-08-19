@@ -9,9 +9,9 @@ export const Route = createFileRoute("/_authenticated/admin/analytics")({
   component: AnalyticsPage,
   head: () => ({
     meta: [
-      { title: "Analytics produits — Minimoys Service" },
+      { title: "Analytics produits — Eventaya Service" },
       { name: "description", content: "Vues, commandes, quantités vendues et stock par produit." },
-      { property: "og:title", content: "Analytics produits — Minimoys Service" },
+      { property: "og:title", content: "Analytics produits — Eventaya Service" },
       { property: "og:description", content: "Performances réelles des produits de la boutique." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

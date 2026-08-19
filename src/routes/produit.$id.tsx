@@ -21,9 +21,9 @@ export const Route = createFileRoute("/produit/$id")({
     loaderData
       ? {
           meta: [
-            { title: `${loaderData.name} — Minimoys Service` },
+            { title: `${loaderData.name} — Eventaya Service` },
             { name: "description", content: loaderData.description },
-            { property: "og:title", content: `${loaderData.name} — Minimoys Service` },
+            { property: "og:title", content: `${loaderData.name} — Eventaya Service` },
             { property: "og:description", content: loaderData.description },
             { property: "og:image", content: loaderData.image },
           ],

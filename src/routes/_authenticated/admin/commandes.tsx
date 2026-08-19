@@ -10,10 +10,10 @@ export const Route = createFileRoute("/_authenticated/admin/commandes")({
   component: OrdersPage,
   head: () => ({
     meta: [
-      { title: "Commandes — Minimoys Service" },
+      { title: "Commandes — Eventaya Service" },
       { name: "description", content: "Suivi et mise à jour du statut des commandes de la boutique." },
-      { property: "og:title", content: "Commandes — Minimoys Service" },
-      { property: "og:description", content: "Suivi des commandes de la boutique Minimoys Service." },
+      { property: "og:title", content: "Commandes — Eventaya Service" },
+      { property: "og:description", content: "Suivi des commandes de la boutique Eventaya Service." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],

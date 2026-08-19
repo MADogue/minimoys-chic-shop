@@ -24,7 +24,7 @@ function Connexion() {
     <div className="container-page grid min-h-[70vh] place-items-center py-16">
       <form className="w-full max-w-md rounded-2xl border border-border p-8" onSubmit={onSubmit}>
         <h1 className="font-display text-3xl">Connexion</h1>
-        <p className="mt-1 text-sm text-ink-muted">Accédez à votre compte Minimoys Service.</p>
+        <p className="mt-1 text-sm text-ink-muted">Accédez à votre compte Eventaya Service.</p>
         <div className="mt-6 space-y-3">
           <input value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} type="email" placeholder="Email" className="h-11 w-full rounded-lg border border-border bg-background px-4 text-sm outline-none focus:border-foreground" />
           <input value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} type="password" placeholder="Mot de passe" className="h-11 w-full rounded-lg border border-border bg-background px-4 text-sm outline-none focus:border-foreground" />
