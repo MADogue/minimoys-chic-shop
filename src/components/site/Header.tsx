@@ -3,7 +3,7 @@ import { Search, User, ShoppingBag, Menu, X, Heart } from "lucide-react";
 import { useState } from "react";
 import { useCart } from "@/lib/cart-store";
 import { categories } from "@/lib/data";
-import logo from "@/assets/logo.png";
+import logoAsset from "@/assets/eventaya-logo.png.asset.json";
 
 const nav = [
   { to: "/", label: "Accueil" },
@@ -38,7 +38,7 @@ export function Header() {
         </button>
 
         <Link to="/" className="flex shrink-0 items-center gap-2">
-          <img src={logo} alt="Eventaya Service" className="h-10 w-10 object-contain" width={40} height={40} />
+          <img src={logoAsset.url} alt="Eventaya Service" className="h-10 w-10 object-contain" width={40} height={40} />
           <span className="hidden font-display text-lg font-semibold tracking-wide sm:block">
             EVENTAYA <span className="text-ink-muted">SERVICE</span>
           </span>
