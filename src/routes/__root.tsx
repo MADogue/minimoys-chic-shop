@@ -81,17 +81,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Minimoys Service — Boutique en ligne en RDC" },
+      { title: "Eventaya Service — Boutique en ligne en RDC" },
       {
         name: "description",
         content:
-          "Minimoys Service : boutique en ligne en RDC. Vêtements, chaussures, téléphones, sacs, montres et accessoires livrés partout au pays.",
+          "Eventaya Service : boutique en ligne en RDC. Vêtements, chaussures, téléphones, sacs, montres et accessoires livrés partout au pays.",
       },
-      { property: "og:title", content: "Minimoys Service — Boutique en ligne en RDC" },
+      { property: "og:title", content: "Eventaya Service — Boutique en ligne en RDC" },
       {
         property: "og:description",
         content:
-          "Style. Qualité. Confiance. Découvrez la boutique en ligne Minimoys Service : livraison partout en RDC, paiement à la livraison, service client via WhatsApp.",
+          "Style. Qualité. Confiance. Découvrez la boutique en ligne Eventaya Service : livraison partout en RDC, paiement à la livraison, service client via WhatsApp.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

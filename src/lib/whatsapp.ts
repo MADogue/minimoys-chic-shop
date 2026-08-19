@@ -9,7 +9,7 @@ function buildUrl(text: string) {
 
 export function whatsappOrderSingle(product: Product, qty = 1, size?: string) {
   const lines = [
-    "Bonjour Minimoys Service 👋",
+    "Bonjour Eventaya Service 👋",
     "Je souhaite commander :",
     "",
     `• ${product.name} (${product.brand})`,
@@ -28,7 +28,7 @@ export function whatsappOrderCart(
   subtotal: number,
 ) {
   const lines = [
-    "Bonjour Minimoys Service 👋",
+    "Bonjour Eventaya Service 👋",
     "Je souhaite passer la commande suivante :",
     "",
     ...items.map(
@@ -43,6 +43,6 @@ export function whatsappOrderCart(
   return buildUrl(lines.join("\n"));
 }
 
-export function whatsappContact(message = "Bonjour Minimoys Service 👋") {
+export function whatsappContact(message = "Bonjour Eventaya Service 👋") {
   return buildUrl(message);
 }

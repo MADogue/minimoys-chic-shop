@@ -6,7 +6,7 @@ export const Route = createFileRoute("/categories")({
   component: Categories,
   head: () => ({
     meta: [
-      { title: "Catégories — Minimoys Service" },
+      { title: "Catégories — Eventaya Service" },
       { name: "description", content: "Toutes les catégories : vêtements, chaussures, téléphones, accessoires, sacs, montres, électronique." },
     ],
   }),

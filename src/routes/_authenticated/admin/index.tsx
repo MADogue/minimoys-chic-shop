@@ -20,16 +20,16 @@ export const Route = createFileRoute("/_authenticated/admin/")({
   component: AdminPage,
   head: () => ({
     meta: [
-      { title: "Administration du catalogue — Minimoys Service" },
+      { title: "Administration du catalogue — Eventaya Service" },
       {
         name: "description",
         content:
-          "Ajoutez, modifiez, supprimez vos produits et gérez le stock de la boutique Minimoys Service.",
+          "Ajoutez, modifiez, supprimez vos produits et gérez le stock de la boutique Eventaya Service.",
       },
-      { property: "og:title", content: "Administration du catalogue — Minimoys Service" },
+      { property: "og:title", content: "Administration du catalogue — Eventaya Service" },
       {
         property: "og:description",
-        content: "Gestion du catalogue et du stock de la boutique Minimoys Service.",
+        content: "Gestion du catalogue et du stock de la boutique Eventaya Service.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

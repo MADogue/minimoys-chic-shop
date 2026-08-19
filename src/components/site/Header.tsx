@@ -38,9 +38,9 @@ export function Header() {
         </button>
 
         <Link to="/" className="flex shrink-0 items-center gap-2">
-          <img src={logo} alt="Minimoys Service" className="h-10 w-10 object-contain" width={40} height={40} />
+          <img src={logo} alt="Eventaya Service" className="h-10 w-10 object-contain" width={40} height={40} />
           <span className="hidden font-display text-lg font-semibold tracking-wide sm:block">
-            MINIMOYS <span className="text-ink-muted">SERVICE</span>
+            EVENTAYA <span className="text-ink-muted">SERVICE</span>
           </span>
         </Link>
 

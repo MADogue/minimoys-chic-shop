@@ -8,16 +8,16 @@ export const Route = createFileRoute("/auth")({
   component: AuthPage,
   head: () => ({
     meta: [
-      { title: "Connexion administrateur — Minimoys Service" },
+      { title: "Connexion administrateur — Eventaya Service" },
       {
         name: "description",
         content:
-          "Espace réservé à l'équipe Minimoys Service pour gérer le catalogue de produits de la boutique.",
+          "Espace réservé à l'équipe Eventaya Service pour gérer le catalogue de produits de la boutique.",
       },
-      { property: "og:title", content: "Connexion administrateur — Minimoys Service" },
+      { property: "og:title", content: "Connexion administrateur — Eventaya Service" },
       {
         property: "og:description",
-        content: "Accès sécurisé à l'administration du catalogue Minimoys Service.",
+        content: "Accès sécurisé à l'administration du catalogue Eventaya Service.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -64,7 +64,7 @@ function AuthPage() {
         <h1 className="font-display text-3xl">
           {mode === "signin" ? "Connexion admin" : "Créer un compte admin"}
         </h1>
-        <p className="mt-1 text-sm text-ink-muted">Espace réservé à l'équipe Minimoys Service.</p>
+        <p className="mt-1 text-sm text-ink-muted">Espace réservé à l'équipe Eventaya Service.</p>
         <div className="mt-6 space-y-3">
           <input
             value={email}

@@ -8,7 +8,7 @@ export function Footer() {
         <div>
           <div className="font-display text-2xl font-semibold tracking-wide">MS</div>
           <div className="mt-1 text-xs uppercase tracking-[0.25em] text-primary-foreground/70">
-            Minimoys Service
+            Eventaya Service
           </div>
           <p className="mt-4 max-w-xs text-sm text-primary-foreground/70">
             Groupe d'achat en ligne en RDC. Vêtements, chaussures, téléphones et accessoires
@@ -38,7 +38,7 @@ export function Footer() {
           <ul className="mt-4 space-y-2 text-sm text-primary-foreground/70">
             <li>Kinshasa, République Démocratique du Congo</li>
             <li>WhatsApp : +243 000 000 000</li>
-            <li>contact@minimoys.cd</li>
+            <li>contact@eventaya.cd</li>
           </ul>
           <div className="mt-5 flex gap-3">
             <a href="#" aria-label="Instagram" className="rounded-full border border-primary-foreground/20 p-2 hover:bg-primary-foreground/10">
@@ -55,7 +55,7 @@ export function Footer() {
       </div>
       <div className="border-t border-primary-foreground/10">
         <div className="container-page flex flex-col items-center justify-between gap-2 py-5 text-xs text-primary-foreground/60 md:flex-row">
-          <p>© {new Date().getFullYear()} Minimoys Service. Tous droits réservés.</p>
+          <p>© {new Date().getFullYear()} Eventaya Service. Tous droits réservés.</p>
           <p>Paiement à la livraison · Mobile Money (à venir)</p>
         </div>
       </div>

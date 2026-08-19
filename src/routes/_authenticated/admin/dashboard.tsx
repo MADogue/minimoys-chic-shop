@@ -9,13 +9,13 @@ export const Route = createFileRoute("/_authenticated/admin/dashboard")({
   component: DashboardPage,
   head: () => ({
     meta: [
-      { title: "Tableau de bord — Minimoys Service" },
+      { title: "Tableau de bord — Eventaya Service" },
       {
         name: "description",
         content: "Suivi de l'activité réelle de la boutique : produits, commandes, chiffre d'affaires et vues.",
       },
-      { property: "og:title", content: "Tableau de bord — Minimoys Service" },
-      { property: "og:description", content: "Suivi de l'activité réelle de la boutique Minimoys Service." },
+      { property: "og:title", content: "Tableau de bord — Eventaya Service" },
+      { property: "og:description", content: "Suivi de l'activité réelle de la boutique Eventaya Service." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],

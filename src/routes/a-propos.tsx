@@ -5,8 +5,8 @@ export const Route = createFileRoute("/a-propos")({
   component: About,
   head: () => ({
     meta: [
-      { title: "À propos — Minimoys Service" },
-      { name: "description", content: "Minimoys Service, boutique en ligne polyvalente en RDC : vêtements, chaussures, téléphones, accessoires livrés partout au pays." },
+      { title: "À propos — Eventaya Service" },
+      { name: "description", content: "Eventaya Service, boutique en ligne polyvalente en RDC : vêtements, chaussures, téléphones, accessoires livrés partout au pays." },
     ],
   }),
 });
@@ -21,7 +21,7 @@ function About() {
             Une boutique en ligne pensée pour la RDC.
           </h1>
           <p className="mt-6 max-w-2xl text-ink-muted md:text-lg">
-            Minimoys Service est un groupe d'achat en ligne sécurisé, présent partout en République
+            Eventaya Service est un groupe d'achat en ligne sécurisé, présent partout en République
             Démocratique du Congo. Nous rassemblons vêtements, chaussures, téléphones et
             accessoires du quotidien à des prix abordables, avec une livraison possible dans tout le pays.
           </p>
