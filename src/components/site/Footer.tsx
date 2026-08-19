@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="mt-24 bg-primary text-primary-foreground">
       <div className="container-page grid gap-10 py-14 md:grid-cols-4">
         <div>
-          <div className="font-display text-2xl font-semibold tracking-wide">MS</div>
+          <div className="font-display text-2xl font-semibold tracking-wide">EV</div>
           <div className="mt-1 text-xs uppercase tracking-[0.25em] text-primary-foreground/70">
             Eventaya Service
           </div>
