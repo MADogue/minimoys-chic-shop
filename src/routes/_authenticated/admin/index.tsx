@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { Minus, Plus, Pencil, Trash2, LogOut, Upload } from "lucide-react";
 import { toast } from "sonner";
 import { categories } from "@/lib/data";
+import { AdminNav } from "@/components/admin/AdminNav";
 import { resolveImage } from "@/lib/products";
 import { supabase } from "@/integrations/supabase/client";
 import {
@@ -220,6 +221,7 @@ function AdminPage() {
         <div>
           <h1 className="font-display text-3xl md:text-5xl">Administration</h1>
           <p className="mt-2 text-sm text-ink-muted">Gérez vos produits et votre stock.</p>
+          <div className="mt-4"><AdminNav /></div>
         </div>
         <div className="flex items-center gap-3">
           <button

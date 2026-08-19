@@ -2,12 +2,14 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCart } from "@/lib/cart-store";
 import { formatFC } from "@/lib/data";
 import { whatsappOrderCart } from "@/lib/whatsapp";
+import { useRecordOrder } from "@/lib/track";
 import { ShieldCheck, MessageCircle, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/paiement")({ component: Paiement });
 
 function Paiement() {
   const { items, subtotal } = useCart();
+  const recordOrder = useRecordOrder();
   const shipping = subtotal > 50000 || subtotal === 0 ? 0 : 3000;
   const total = subtotal + shipping;
 
@@ -49,6 +51,7 @@ function Paiement() {
             href={whatsappOrderCart(items, total)}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => recordOrder(items, total)}
             className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary py-4 text-sm font-semibold uppercase tracking-wider text-primary-foreground"
           >
             Envoyer ma commande <ArrowRight className="h-4 w-4" />
