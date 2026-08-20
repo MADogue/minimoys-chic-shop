@@ -32,13 +32,25 @@ export function useProductView(productId: string) {
   }, [productId, viewFn]);
 }
 
+export type CustomerInfo = {
+  name: string;
+  phone: string;
+  commune: string;
+  quartier: string;
+};
+
 export function useRecordOrder() {
   const orderFn = useServerFn(createOrder);
-  return (items: { product: Product; qty: number }[], total: number) => {
-    if (items.length === 0) return;
-    void orderFn({
+  return async (
+    items: { product: Product; qty: number }[],
+    total: number,
+    customer: CustomerInfo,
+  ) => {
+    if (items.length === 0) return { ok: false as const };
+    return await orderFn({
       data: {
         total,
+        customer,
         items: items.map(({ product, qty }) => ({
           productId: product.id,
           name: product.name,
@@ -46,6 +58,7 @@ export function useRecordOrder() {
           quantity: qty,
         })),
       },
-    }).catch(() => {});
+    });
   };
 }
+

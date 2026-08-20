@@ -62,10 +62,12 @@ export type Database = {
       orders: {
         Row: {
           channel: string
+          commune: string | null
           created_at: string
           customer_contact: string | null
           customer_name: string | null
           id: string
+          quartier: string | null
           reference: string
           status: Database["public"]["Enums"]["order_status"]
           total: number
@@ -73,10 +75,12 @@ export type Database = {
         }
         Insert: {
           channel?: string
+          commune?: string | null
           created_at?: string
           customer_contact?: string | null
           customer_name?: string | null
           id?: string
+          quartier?: string | null
           reference?: string
           status?: Database["public"]["Enums"]["order_status"]
           total?: number
@@ -84,10 +88,12 @@ export type Database = {
         }
         Update: {
           channel?: string
+          commune?: string | null
           created_at?: string
           customer_contact?: string | null
           customer_name?: string | null
           id?: string
+          quartier?: string | null
           reference?: string
           status?: Database["public"]["Enums"]["order_status"]
           total?: number

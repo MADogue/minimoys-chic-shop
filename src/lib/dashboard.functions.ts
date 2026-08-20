@@ -36,7 +36,7 @@ export const listOrders = createServerFn({ method: "GET" })
     const { data, error } = await context.supabase
       .from("orders")
       .select(
-        "id, reference, customer_name, customer_contact, total, status, created_at, order_items(id, product_name, quantity, unit_price)",
+        "id, reference, customer_name, customer_contact, commune, quartier, total, status, created_at, order_items(id, product_name, quantity, unit_price)",
       )
       .order("created_at", { ascending: false })
       .limit(200);

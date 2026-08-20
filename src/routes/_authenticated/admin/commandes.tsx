@@ -90,7 +90,11 @@ function OrdersPage() {
                 <td className="p-4">
                   <div>{o.customer_name || "—"}</div>
                   <div className="text-xs text-ink-muted">{o.customer_contact || "—"}</div>
+                  <div className="text-xs text-ink-muted">
+                    {[o.commune, o.quartier].filter(Boolean).join(" · ") || "—"}
+                  </div>
                 </td>
+
                 <td className="p-4">
                   {(o.order_items ?? []).map((i) => (
                     <div key={i.id} className="text-xs">
