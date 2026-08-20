@@ -46,3 +46,33 @@ export function whatsappOrderCart(
 export function whatsappContact(message = "Bonjour Eventaya Service 👋") {
   return buildUrl(message);
 }
+
+export function whatsappOrderFull(
+  customer: { name: string; phone: string; commune: string; quartier: string },
+  items: { product: Product; qty: number }[],
+  total: number,
+  reference?: string,
+) {
+  const lines = [
+    "Bonjour Eventaya,",
+    "",
+    "Je souhaite passer la commande suivante :",
+    "",
+    ...items.flatMap(({ product, qty }) => [
+      `🛍️ Produit : ${product.name}`,
+      `🔢 Quantité : ${qty}`,
+      `💰 Prix : ${formatFC(product.price * qty)}`,
+      "",
+    ]),
+    `💵 Total : ${formatFC(total)}`,
+    "",
+    `👤 Nom : ${customer.name}`,
+    `📱 WhatsApp : ${customer.phone}`,
+    `📍 Commune : ${customer.commune}`,
+    `🏘️ Quartier : ${customer.quartier}`,
+    reference ? `\n🧾 N° commande : ${reference}` : "",
+    "",
+    "Merci.",
+  ].filter(Boolean);
+  return buildUrl(lines.join("\n"));
+}
