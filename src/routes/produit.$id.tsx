@@ -52,7 +52,7 @@ function ProductPage() {
   const [size, setSize] = useState("M");
   const [added, setAdded] = useState(false);
   useProductView(product.id);
-  const recordOrder = useRecordOrder();
+  const navigate = useNavigate();
 
   const related = products.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 4);
 
