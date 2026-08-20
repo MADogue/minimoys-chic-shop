@@ -88,15 +88,13 @@ function Panier() {
                 <span>{formatFC(total)}</span>
               </div>
             </div>
-            <a
-              href={whatsappOrderCart(items, total)}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => recordOrder(items, total)}
+            <Link
+              to="/paiement"
               className="mt-6 flex items-center justify-center gap-2 rounded-full bg-primary py-3 text-sm font-semibold uppercase tracking-wider text-primary-foreground"
             >
-              Commander sur WhatsApp <ArrowRight className="h-4 w-4" />
-            </a>
+              Commander <ArrowRight className="h-4 w-4" />
+            </Link>
+
             <div className="mt-3 text-center text-xs text-ink-muted">Commande confirmée en 1 clic · Paiement à la livraison</div>
           </aside>
         </div>
