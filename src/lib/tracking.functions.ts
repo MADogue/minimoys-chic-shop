@@ -33,6 +33,12 @@ export const recordProductView = createServerFn({ method: "POST" })
 
 const orderSchema = z.object({
   total: z.number().min(0),
+  customer: z.object({
+    name: z.string().trim().min(2).max(80),
+    phone: z.string().trim().min(6).max(30),
+    commune: z.string().trim().min(2).max(80),
+    quartier: z.string().trim().min(2).max(80),
+  }),
   items: z
     .array(
       z.object({
@@ -52,10 +58,19 @@ export const createOrder = createServerFn({ method: "POST" })
     const db = client();
     const { data: order, error } = await db
       .from("orders")
-      .insert({ total: data.total, channel: "whatsapp" })
+      .insert({
+        total: data.total,
+        channel: "whatsapp",
+        status: "pending",
+        customer_name: data.customer.name,
+        customer_contact: data.customer.phone,
+        commune: data.customer.commune,
+        quartier: data.customer.quartier,
+      })
       .select("id, reference")
       .single();
     if (error || !order) return { ok: false };
+
     const { error: itemsError } = await db.from("order_items").insert(
       data.items.map((i) => ({
         order_id: order.id,
