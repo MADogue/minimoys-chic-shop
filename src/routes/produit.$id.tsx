@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { formatFC } from "@/lib/data";
 import { productQueryOptions, productsQueryOptions } from "@/lib/products";
@@ -6,8 +6,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { useCart } from "@/lib/cart-store";
 import { Star, ShoppingBag, Heart, Truck, ShieldCheck, RotateCcw, Check } from "lucide-react";
 import { ProductCard } from "@/components/site/ProductCard";
-import { whatsappOrderSingle } from "@/lib/whatsapp";
-import { useProductView, useRecordOrder } from "@/lib/track";
+import { useProductView } from "@/lib/track";
 
 export const Route = createFileRoute("/produit/$id")({
   loader: async ({ params, context }) => {
@@ -123,15 +122,15 @@ function ProductPage() {
                 <span className="w-8 text-center">{qty}</span>
                 <button onClick={() => setQty((q) => q + 1)} className="px-4 text-lg">+</button>
               </div>
-              <a
-                href={whatsappOrderSingle(product, qty, ["vetements", "chaussures"].includes(product.category) ? size : undefined)}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => recordOrder([{ product, qty }], product.price * qty)}
+              <button
+                onClick={() => {
+                  add(product, qty);
+                  void navigate({ to: "/paiement" });
+                }}
                 className="flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold uppercase tracking-wider text-primary-foreground transition hover:opacity-90"
               >
-                Commander sur WhatsApp
-              </a>
+                Commander
+              </button>
               <button
                 onClick={() => toggleFav(product.id)}
                 aria-label="Favori"
