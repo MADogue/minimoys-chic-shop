@@ -53,26 +53,38 @@ export function whatsappOrderFull(
   total: number,
   reference?: string,
 ) {
-  const lines = [
+  const E = {
+    bag: "\u{1F6CD}",
+    num: "\u{1F522}",
+    money: "\u{1F4B0}",
+    cash: "\u{1F4B5}",
+    user: "\u{1F464}",
+    phone: "\u{1F4F1}",
+    pin: "\u{1F4CD}",
+    house: "\u{1F3D8}",
+    receipt: "\u{1F9FE}",
+  };
+  const lines: string[] = [
     "Bonjour Eventaya,",
     "",
     "Je souhaite passer la commande suivante :",
     "",
     ...items.flatMap(({ product, qty }) => [
-      `🛍️ Produit : ${product.name}`,
-      `🔢 Quantité : ${qty}`,
-      `💰 Prix : ${formatFC(product.price * qty)}`,
+      `${E.bag} Produit : ${product.name}`,
+      `${E.num} Quantité : ${qty}`,
+      `${E.money} Prix : ${formatFC(product.price * qty)}`,
       "",
     ]),
-    `💵 Total : ${formatFC(total)}`,
+    `${E.cash} Total : ${formatFC(total)}`,
     "",
-    `👤 Nom : ${customer.name}`,
-    `📱 WhatsApp : ${customer.phone}`,
-    `📍 Commune : ${customer.commune}`,
-    `🏘️ Quartier : ${customer.quartier}`,
-    reference ? `\n🧾 N° commande : ${reference}` : "",
+    `${E.user} Nom : ${customer.name}`,
+    `${E.phone} WhatsApp : ${customer.phone}`,
+    `${E.pin} Commune : ${customer.commune}`,
+    `${E.house} Quartier : ${customer.quartier}`,
+    ...(reference ? ["", `${E.receipt} N° commande : ${reference}`] : []),
     "",
     "Merci.",
-  ].filter(Boolean);
+  ];
   return buildUrl(lines.join("\n"));
 }
+
