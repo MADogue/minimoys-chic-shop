@@ -55,12 +55,12 @@ function Home() {
                 Voir les catégories
               </Link>
             </div>
-            <div className="mt-10 flex items-center gap-6 text-xs text-ink-muted">
-              <div><b className="text-foreground">+2 500</b> clients en RDC</div>
+<div className="mt-10 flex items-center gap-6 text-xs text-ink-muted">
+              <div>Une boutique basée à Kinshasa</div>
               <div className="h-4 w-px bg-border" />
-              <div><b className="text-foreground">4.8/5</b> avis clients</div>
+              <div>Commande simple via WhatsApp</div>
               <div className="h-4 w-px bg-border" />
-              <div><b className="text-foreground">24h</b> service WhatsApp</div>
+              <div>Livraison disponible à Kinshasa</div>
             </div>
           </div>
           <div className="relative">

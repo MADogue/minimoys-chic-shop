@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Heart, Star } from "lucide-react";
+import { Heart } from "lucide-react";
 import type { Product } from "@/lib/data";
 import { formatFC } from "@/lib/data";
 import { useCart } from "@/lib/cart-store";
@@ -48,11 +48,6 @@ export function ProductCard({ product }: { product: Product }) {
         <Link to="/produit/$id" params={{ id: product.id }} className="mt-0.5 block font-medium hover:underline">
           {product.name}
         </Link>
-        <div className="mt-1 flex items-center gap-1.5 text-xs text-ink-muted">
-          <Star className="h-3.5 w-3.5 fill-primary text-primary" />
-          <span>{product.rating.toFixed(1)}</span>
-          <span>({product.reviews})</span>
-        </div>
         <div className="mt-1.5 flex items-baseline gap-2">
           <span className="font-semibold">{formatFC(product.price)}</span>
           {product.oldPrice && (
