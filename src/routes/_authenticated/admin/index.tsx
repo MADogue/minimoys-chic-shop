@@ -256,7 +256,7 @@ function AdminPage() {
             />
             <input
               className={field}
-              placeholder="Prix (FC)"
+              placeholder="Prix ($)"
               type="number"
               value={form.price}
               onChange={(e) => setForm({ ...form, price: e.target.value })}
@@ -416,7 +416,7 @@ function AdminPage() {
                   <div className="text-xs text-ink-muted">{p.brand}</div>
                 </td>
                 <td className="p-4">{p.category}</td>
-                <td className="p-4">{Number(p.price).toLocaleString("fr-FR")} FC</td>
+                <td className="p-4">{Number(p.price).toLocaleString("fr-FR")} $</td>
                 <td className="p-4">
                   <div className="inline-flex items-center gap-2">
                     <button
