@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, MessageCircle } from "lucide-react";
+import { whatsappContact } from "@/lib/whatsapp";
 
 export function Footer() {
   return (
