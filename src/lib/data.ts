@@ -15,7 +15,7 @@ export type Category = {
 export type Product = {
   id: string;
   name: string;
-  price: number; // in FC (Congolese Franc)
+  price: number; // in USD
   oldPrice?: number;
   category: string;
   brand: string;
@@ -154,7 +154,7 @@ export const products: Product[] = [
 export const brands = Array.from(new Set(products.map((p) => p.brand)));
 
 export function formatFC(n: number): string {
-  return `${n.toLocaleString("fr-FR")} FC`;
+  return `${n.toLocaleString("fr-FR")} $`;
 }
 
 export function findProduct(id: string) {
