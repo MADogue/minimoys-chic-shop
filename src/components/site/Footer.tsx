@@ -48,7 +48,7 @@ export function Footer() {
             <a href="#" aria-label="Facebook" className="rounded-full border border-primary-foreground/20 p-2 hover:bg-primary-foreground/10">
               <Facebook className="h-4 w-4" />
             </a>
-            <a href="#" aria-label="WhatsApp" className="rounded-full border border-primary-foreground/20 p-2 hover:bg-primary-foreground/10">
+<a href={whatsappContact()} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="rounded-full border border-primary-foreground/20 p-2 hover:bg-primary-foreground/10">
               <MessageCircle className="h-4 w-4" />
             </a>
           </div>
