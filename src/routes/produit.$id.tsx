@@ -4,7 +4,7 @@ import { formatFC } from "@/lib/data";
 import { productQueryOptions, productsQueryOptions } from "@/lib/products";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { useCart } from "@/lib/cart-store";
-import { Star, ShoppingBag, Heart, Truck, ShieldCheck, RotateCcw, Check } from "lucide-react";
+import { ShoppingBag, Heart, Truck, ShieldCheck, RotateCcw, Check } from "lucide-react";
 import { ProductCard } from "@/components/site/ProductCard";
 import { useProductView } from "@/lib/track";
 
@@ -77,11 +77,7 @@ function ProductPage() {
         <div>
           <div className="text-[11px] uppercase tracking-widest text-ink-muted">{product.brand}</div>
           <h1 className="mt-2 font-display text-3xl md:text-5xl">{product.name}</h1>
-          <div className="mt-3 flex items-center gap-2 text-sm text-ink-muted">
-            <Star className="h-4 w-4 fill-primary text-primary" />
-            <span className="text-foreground">{product.rating.toFixed(1)}</span>
-            <span>· {product.reviews} avis</span>
-            <span className="mx-2">·</span>
+<div className="mt-3 flex items-center gap-2 text-sm text-ink-muted">
             <span>{product.stock > 0 ? `${product.stock} en stock` : "Rupture"}</span>
           </div>
 
