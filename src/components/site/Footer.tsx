@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, MessageCircle } from "lucide-react";
+import { whatsappContact } from "@/lib/whatsapp";
 
 export function Footer() {
   return (
@@ -37,7 +38,7 @@ export function Footer() {
           <h4 className="text-sm font-semibold">Contact</h4>
           <ul className="mt-4 space-y-2 text-sm text-primary-foreground/70">
             <li>Kinshasa, République Démocratique du Congo</li>
-            <li>WhatsApp : +243 000 000 000</li>
+            <li>WhatsApp : +243 855 915 955</li>
             <li>contact@eventaya.cd</li>
           </ul>
           <div className="mt-5 flex gap-3">
@@ -47,7 +48,7 @@ export function Footer() {
             <a href="#" aria-label="Facebook" className="rounded-full border border-primary-foreground/20 p-2 hover:bg-primary-foreground/10">
               <Facebook className="h-4 w-4" />
             </a>
-            <a href="#" aria-label="WhatsApp" className="rounded-full border border-primary-foreground/20 p-2 hover:bg-primary-foreground/10">
+<a href={whatsappContact()} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="rounded-full border border-primary-foreground/20 p-2 hover:bg-primary-foreground/10">
               <MessageCircle className="h-4 w-4" />
             </a>
           </div>
