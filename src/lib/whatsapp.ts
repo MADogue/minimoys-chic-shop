@@ -1,7 +1,7 @@
 import type { Product } from "./data";
 import { formatFC } from "./data";
 
-export const WHATSAPP_NUMBER = "243860046210";
+export const WHATSAPP_NUMBER = "243855915955";
 
 function buildUrl(text: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;

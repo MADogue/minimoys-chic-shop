@@ -25,8 +25,8 @@ function Contact() {
         <div className="rounded-2xl border border-border p-8">
           <h2 className="font-display text-2xl">Coordonnées</h2>
           <ul className="mt-6 space-y-4 text-sm">
-            <li className="flex items-center gap-3"><MessageCircle className="h-5 w-5" /> WhatsApp : +243 000 000 000</li>
-            <li className="flex items-center gap-3"><Phone className="h-5 w-5" /> Appel : +243 000 000 000</li>
+<li className="flex items-center gap-3"><MessageCircle className="h-5 w-5" /> WhatsApp : +243 855 915 955</li>
+            <li className="flex items-center gap-3"><Phone className="h-5 w-5" /> Appel : +243 855 915 955</li>
             <li className="flex items-center gap-3"><Mail className="h-5 w-5" /> contact@eventaya.cd</li>
             <li className="flex items-center gap-3"><MapPin className="h-5 w-5" /> Kinshasa, RDC</li>
           </ul>

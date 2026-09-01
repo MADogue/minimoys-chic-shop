@@ -37,7 +37,7 @@ export function Footer() {
           <h4 className="text-sm font-semibold">Contact</h4>
           <ul className="mt-4 space-y-2 text-sm text-primary-foreground/70">
             <li>Kinshasa, République Démocratique du Congo</li>
-            <li>WhatsApp : +243 000 000 000</li>
+            <li>WhatsApp : +243 855 915 955</li>
             <li>contact@eventaya.cd</li>
           </ul>
           <div className="mt-5 flex gap-3">
