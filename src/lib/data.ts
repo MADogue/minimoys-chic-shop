@@ -30,12 +30,6 @@ export type Product = {
 export const categories: Category[] = [
   { slug: "vetements", name: "Vêtements", image: clothing },
   { slug: "chaussures", name: "Chaussures", image: shoes },
-  { slug: "telephones", name: "Téléphones", image: phones },
-  { slug: "sacs", name: "Sacs", image: bags },
-  { slug: "montres", name: "Montres", image: watches },
-  { slug: "electronique", name: "Électronique", image: audio },
-  { slug: "accessoires", name: "Accessoires", image: watches },
-  { slug: "autres", name: "Autres", image: hoodie },
 ];
 
 export const products: Product[] = [

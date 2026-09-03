@@ -7,7 +7,7 @@ export const Route = createFileRoute("/categories")({
   head: () => ({
     meta: [
       { title: "Catégories — Eventaya Service" },
-      { name: "description", content: "Toutes les catégories : vêtements, chaussures, téléphones, accessoires, sacs, montres, électronique." },
+      { name: "description", content: "Toutes les catégories : vêtements et chaussures." },
     ],
   }),
 });
@@ -20,7 +20,7 @@ function Categories() {
       <p className="mt-3 max-w-xl text-ink-muted">
         Une sélection soignée dans chaque univers. Choisissez la catégorie qui vous correspond.
       </p>
-      <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+      <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-2">
         {categories.map((c) => (
           <Link
             key={c.slug}
