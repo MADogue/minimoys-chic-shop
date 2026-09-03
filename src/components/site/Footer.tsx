@@ -11,9 +11,9 @@ export function Footer() {
           <div className="mt-1 text-xs uppercase tracking-[0.25em] text-primary-foreground/70">
             Eventaya Service
           </div>
-          <p className="mt-4 max-w-xs text-sm text-primary-foreground/70">
-            Groupe d'achat en ligne en RDC. Vêtements, chaussures, téléphones et accessoires
-            sélectionnés avec soin, livrés partout au pays.
+<p className="mt-4 max-w-xs text-sm text-primary-foreground/70">
+            Groupe d'achat en ligne à Kinshasa. Vêtements, chaussures, téléphones et accessoires
+            sélectionnés avec soin, livrés partout à Kinshasa avec paiement à la livraison.
           </p>
         </div>
         <div>

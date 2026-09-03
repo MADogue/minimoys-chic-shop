@@ -6,7 +6,7 @@ export const Route = createFileRoute("/a-propos")({
   head: () => ({
     meta: [
       { title: "À propos — Eventaya Service" },
-      { name: "description", content: "Eventaya Service, boutique en ligne polyvalente en RDC : vêtements, chaussures, téléphones, accessoires livrés partout au pays." },
+      { name: "description", content: "Eventaya Service, boutique en ligne polyvalente à Kinshasa : vêtements, chaussures, téléphones, accessoires livrés partout à Kinshasa, paiement à la livraison." },
     ],
   }),
 });
@@ -20,10 +20,11 @@ function About() {
           <h1 className="mt-3 max-w-3xl font-display text-4xl md:text-7xl">
             Une boutique en ligne pensée pour la RDC.
           </h1>
-          <p className="mt-6 max-w-2xl text-ink-muted md:text-lg">
+<p className="mt-6 max-w-2xl text-ink-muted md:text-lg">
             Eventaya Service est un groupe d'achat en ligne sécurisé, présent partout en République
             Démocratique du Congo. Nous rassemblons vêtements, chaussures, téléphones et
-            accessoires du quotidien à des prix abordables, avec une livraison possible dans tout le pays.
+            accessoires du quotidien à des prix abordables, avec une livraison partout à Kinshasa
+            et un paiement à la livraison.
           </p>
         </div>
       </section>
@@ -42,8 +43,8 @@ function About() {
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           {[
-            { icon: Truck, title: "Livraison partout", desc: "Dans toute la RDC" },
-            { icon: ShieldCheck, title: "Achat sécurisé", desc: "Paiement 100% sécurisé" },
+{ icon: Truck, title: "Livraison partout à Kinshasa", desc: "À domicile, dans toute la ville" },
+            { icon: ShieldCheck, title: "Paiement à la livraison", desc: "Payez en espèces à la réception" },
             { icon: Award, title: "Qualité vérifiée", desc: "Produits sélectionnés" },
             { icon: MessageCircle, title: "Service 7j/7", desc: "Via WhatsApp" },
           ].map((v) => (
