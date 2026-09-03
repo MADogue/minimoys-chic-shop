@@ -23,7 +23,7 @@ export function Header() {
       {/* top strip */}
       <div className="hidden bg-primary text-primary-foreground md:block">
         <div className="container-page flex h-9 items-center justify-between text-xs">
-          <span>Livraison partout en RDC · Paiement à la livraison disponible</span>
+          <span>Livraison partout à Kinshasa · Paiement à la livraison disponible</span>
           <span>Service client via WhatsApp · 7j/7</span>
         </div>
       </div>

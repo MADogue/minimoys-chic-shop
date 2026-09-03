@@ -144,7 +144,7 @@ function ProductPage() {
           </div>
 
           <div className="mt-8 grid gap-3 rounded-2xl bg-surface p-5 text-sm">
-            <div className="flex items-center gap-3"><Truck className="h-4 w-4" /> Livraison partout en RDC</div>
+            <div className="flex items-center gap-3"><Truck className="h-4 w-4" /> Livraison partout à Kinshasa</div>
             <div className="flex items-center gap-3"><ShieldCheck className="h-4 w-4" /> Paiement à la livraison disponible</div>
             <div className="flex items-center gap-3"><RotateCcw className="h-4 w-4" /> Retour sous 7 jours</div>
           </div>

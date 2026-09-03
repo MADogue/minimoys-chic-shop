@@ -37,9 +37,9 @@ function Home() {
             <h1 className="mt-5 font-display text-5xl leading-[0.95] tracking-tight md:text-7xl">
               Tout ce qu'il vous <br /> faut, au meilleur <br /> prix.
             </h1>
-            <p className="mt-6 max-w-lg text-base text-ink-muted md:text-lg">
-              Commandez facilement partout en RDC avec un service rapide et sécurisé.
-              Sélection premium, livraison à domicile, paiement à la livraison.
+<p className="mt-6 max-w-lg text-base text-ink-muted md:text-lg">
+              Commandez facilement partout à Kinshasa avec un service rapide et sécurisé.
+              Sélection premium, livraison à domicile et paiement à la livraison.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -84,8 +84,8 @@ function Home() {
       <section className="border-y border-border bg-background">
         <div className="container-page grid gap-6 py-10 md:grid-cols-4">
           {[
-            { icon: Truck, title: "Livraison partout en RDC", desc: "Kinshasa, Lubumbashi, Goma…" },
-            { icon: ShieldCheck, title: "Paiement sécurisé", desc: "Cash à la livraison ou Mobile Money" },
+{ icon: Truck, title: "Livraison partout à Kinshasa", desc: "À domicile, dans toute la ville" },
+            { icon: ShieldCheck, title: "Paiement à la livraison", desc: "Payez en espèces à la réception" },
             { icon: Award, title: "Produits de qualité", desc: "Sélection premium vérifiée" },
             { icon: MessageCircle, title: "Service client WhatsApp", desc: "Réponse rapide, 7j/7" },
           ].map((f) => (
@@ -175,9 +175,9 @@ function Home() {
             <h2 className="mt-3 font-display text-4xl md:text-6xl">
               Une boutique fiable, pensée pour la RDC.
             </h2>
-            <p className="mt-5 max-w-lg text-primary-foreground/70">
-              Nous sélectionnons chaque produit, gérons la livraison partout dans le pays et
-              restons joignables via WhatsApp. Commandez en toute confiance.
+<p className="mt-5 max-w-lg text-primary-foreground/70">
+              Nous sélectionnons chaque produit, livrons partout à Kinshasa avec paiement à la
+              livraison, et restons joignables via WhatsApp. Commandez en toute confiance.
             </p>
             <Link
               to="/boutique"
