@@ -32,7 +32,7 @@ function Home() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 text-[11px] uppercase tracking-widest text-ink-muted">
               <Sparkles className="h-3 w-3" />
-              Vêtements · Chaussures · Tech · Accessoires
+              Vêtements · Chaussures
             </div>
             <h1 className="mt-5 font-display text-5xl leading-[0.95] tracking-tight md:text-7xl">
               Tout ce qu'il vous <br /> faut, au meilleur <br /> prix.
@@ -113,23 +113,19 @@ function Home() {
             Voir toutes les catégories
           </Link>
         </div>
-        <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
-          {categories.slice(0, 8).map((c, i) => (
+<div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-2 md:gap-5">
+          {categories.map((c) => (
             <Link
               key={c.slug}
               to="/boutique"
               search={{ cat: c.slug }}
-              className={`group relative overflow-hidden rounded-2xl bg-secondary ${
-                i === 0 ? "md:col-span-2 md:row-span-2" : ""
-              }`}
+              className="group relative overflow-hidden rounded-2xl bg-secondary"
             >
               <img
                 src={c.image}
                 alt={c.name}
                 loading="lazy"
-                className={`w-full object-cover transition-transform duration-500 group-hover:scale-105 ${
-                  i === 0 ? "aspect-square md:aspect-auto md:h-full" : "aspect-square"
-                }`}
+                className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 text-white md:p-5">
